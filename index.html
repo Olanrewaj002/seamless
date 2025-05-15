@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+    <script src="gsap-animation.js" defer></script>
+    <style>
+        #typed-text::after {
+          content: "|";
+          animation: blink 0.8s infinite;
+          margin-left: 2px;
+        }
+      
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+    </style>
+  </head>
+  <body>
+    <!-- Hero and nav wrapper -->
+    <div class="nav-hero pb-20 w-full h-full items-center justify-center px-[80px]">
+      <!--Nav bar-->
+      <header class="px-20 top-0 z-50  " x-data="{ open: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:py-2">
+          <div class="flex justify-between items-center py-4">
+            <!-- Logo -->
+            <a href="#home" class="text-2xl font-bold text-indigo-600 z-50 relative"><img src="images/logo.png" class="w-32"></a>
+      
+            <!-- Desktop Nav -->
+            <div class="flex gap-6">
+                <!-- Dropdown 1 -->
+                <div class="relative group cursor-pointer">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[12px] font-medium">Products</span>
+                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                  <div class="absolute left-0 mt-2 bg-white border rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
+                    <a href="#" class="block px-4 py-2 text-xs hover:bg-gray-100">Child 1</a>
+                    <a href="#" class="block px-4 py-2 text-xs hover:bg-gray-100">Child 2</a>
+                  </div>
+                </div>
+              
+                <!-- Dropdown 2 -->
+                <div class="relative group cursor-pointer">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[12px] font-medium">Customers</span>
+                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                  <div class="absolute left-0 mt-2 bg-white border rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
+                    <a href="#" class="block px-4 py-2 text-xs hover:bg-gray-100">Child 1</a>
+                    <a href="#" class="block px-4 py-2 text-xs hover:bg-gray-100">Child 2</a>
+                  </div>
+                </div>
+              
+                <!-- Dropdown 3 -->
+                <div class="relative group cursor-pointer">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[12px] font-medium">Company</span>
+                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                  <div class="absolute left-0 mt-2 bg-white border rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
+                    <a href="#" class="block px-4 py-2 text-xs hover:bg-gray-100">Child 1</a>
+                    <a href="#" class="block px-4 py-2 text-xs hover:bg-gray-100">Child 2</a>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <span class="text-[12px] font-medium">Pricing</span>
+                </div>
+              </div>
+              
+      
+            <!-- Desktop Buttons -->
+            <div class="hidden md:flex items-center lg:flex gap-4">
+              <a href="#get-started"><button class="px-4 py-3 text-xs rounded-md font-bold text-gray-900 hover:text-white/80 hover:bg-indigo-700">Login</button></a>
+              <a href="#get-started"><button class="px-4 py-3 shadow-md text-xs rounded-md font-bold text-gray-900 hover:text-white/80 hover:bg-indigo-700">Get A Demo</button></a>
+              <a href="#contact" class="px-4 py-3 bg-blue-500 text-xs rounded-md text-white/80 font-bold hover:bg-indigo-700">Join Free</a>
+            </div>
+          </div>
+        </div>
+        </header>
+        <!--Nav bar end-->
+
+        <!-- Hero start -->
+        <div class="flex flex-col items-center justify-center text-center mt-10">
+            <h1 class="text-4xl lg:text-5xl text-black/80 font-medium mb-4">
+                <span id="typed-text"></span>
+              </h1>
+              <p id="backward-text" class="text-sm text-gray-500 mb-8 lg:px-[420px]"></p>
+        </div>
+        <div class="items-center">
+            <div id="slide-in-box" class="bg-white flex justify-between items-center rounded-lg drop-shadow-lg px-1 py-1 w-full max-w-lg mx-auto">
+                <form>
+                    <input 
+                      type="email" 
+                      placeholder="Business Email" 
+                      class="text-base text-gray-700 ml-2 rounded px-3 py-2 focus:outline-none focus:ring-2 w-[340px] focus:ring-blue-100"
+                    />
+                  </form>
+                <button class="bg-blue-500 rounded-lg py-3 px-10 text-white/80">Join Free</button>
+            </div>
+            <div id="slide-in-left">
+                <p class="text-xs text-gray-500 mt-2 text-center lg:px-96">
+                    By submitting this form, you agree to our <a href="#" class="text-blue-500">Terms of Use,</a><a href="#" class="text-blue-500">Privacy Policy</a>, and consent to receiving marketing communications from us.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row items-center justify-center mt-4 gap-4">
+            <div class="flex items-center gap-0">
+                <img src="images/golden-star-clipart.png" class="w-4">
+                <img src="images/golden-star-clipart.png" class="w-4">
+                <img src="images/golden-star-clipart.png" class="w-4">
+                <img src="images/golden-star-clipart.png" class="w-4">
+                <img src="images/golden-star-clipart.png" class="w-4">
+            </div>
+            <div>
+                <p class="font-bold text-xs text-black/80">(4000+ REVIEWS BY USERS)</p>
+            </div>
+        </div>
+
+        <!-- Hero Card Containers-->
+        <div class="card-1 flex flex-col relative lg:flex-row items-center justify-center mt-3 gap-8">
+        <!-- Hero Card 1-->
+        <div id="slide-left" class="w-48 rounded-xl relative -rotate-3 overflow-hidden shadow-lg bg-gray-100 pb-4 mt-10">
+            <div class="relative">
+              <!-- Image wrapper with margin -->
+              <div id="slide-left" class="m-1">
+                <img class="w-full h-36 object-cover bg-gradient-to-b from-transparent to-blue-200 rounded-lg" src="images/new1.png" alt="Card Image">
+              </div>
+          
+              <!-- Bookmark Icon -->
+              <div id="slide-left" class="absolute bottom-2 right-4 bg-white p-1 rounded-full shadow">
+                <img src="https://img.icons8.com/ios-filled/50/4CAF50/hexagon.png" alt="Tech Logo" class="w-5 h-5">
+              </div>
+            </div>
+          
+            <div id="slide-left" class="p-3 ">
+              <h3 class="text-xs font-semibold mb-1">Richard Jefferson</h3>
+              <p class="text-gray-400 text-[10px]">VP of Engineering at <span class="text-blue-600">Pedalton</span></p>
+            </div>
+
+            <!-- Contact Info container 1-->
+            <div id="slide-left" class="flex items-center">
+                <div id="slide-left" class="relative">
+                    <!-- icon wrapper with margin -->
+                    <div class="mx-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="24px" fill="#f6"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/></svg>
+                    </div>
+                
+                    <!-- check Icon -->
+                    <div class="absolute bottom-2 left-3.5 top-0.5 p-1">
+                    <img src="images/checkmark-no-bg.png" alt="checkmark" class="w-2 h-2">
+                    </div>
+                </div>
+                <!-- Email container -->
+                <div id="slide-left" class="flex justify-between items-center relative right-1 border border-black/5 rounded-lg shadow-lg px-2 py-0.5 w w-64 mx-auto">
+                    <p class="text-[9px]">richard_j@pedalton.com</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="opacity-40" height="10px" viewBox="0 -960 960 960" width="24px" fill="#f6"><path d="M760-200H320q-33 0-56.5-23.5T240-280v-560q0-33 23.5-56.5T320-920h280l240 240v400q0 33-23.5 56.5T760-200ZM560-640v-200H320v560h440v-360H560ZM160-40q-33 0-56.5-23.5T80-120v-560h80v560h440v80H160Zm160-800v200-200 560-560Z"/></svg>
+                </div>
+                
+            </div>
+
+            <!-- Contact Info container 2-->
+            <div id="slide-left" class="flex items-center mt-1">
+                <div class="relative">
+                    <!-- icon wrapper -->
+                    <div class="mx-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="24px" fill="#f6"><path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg>
+                    </div>
+                
+                    <!-- check Icon -->
+                    <div class="absolute bottom-2 left-3.5 top-0.5 p-1">
+                    <img src="images/checkmark-no-bg.png" alt="checkmark" class="w-2 h-2">
+                    </div>
+                </div>
+                <!-- Email container -->
+                <div id="slide-left" class="flex justify-between items-center relative right-1 border border-black/5 rounded-lg shadow-lg px-2 py-0.5 max-w-lg w-64 mx-auto">
+                    <p class="text-[9px]">(678) 367-2035</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="opacity-40" height="10px" viewBox="0 -960 960 960" width="24px" fill="#f6"><path d="M760-200H320q-33 0-56.5-23.5T240-280v-560q0-33 23.5-56.5T320-920h280l240 240v400q0 33-23.5 56.5T760-200ZM560-640v-200H320v560h440v-360H560ZM160-40q-33 0-56.5-23.5T80-120v-560h80v560h440v80H160Zm160-800v200-200 560-560Z"/></svg>
+                </div>
+                
+            </div>
+        </div>
+        <!-- Hero Card end -->
+
+        <!-- Hero Card 2-->
+        <div id="slide-top" class="w-48 relative bottom-2 rounded-xl overflow-hidden shadow-lg bg-gray-100 pb-3 mt-10">
+            <div id="slide-top" class="relative">
+              <!-- Image wrapper margin --> 
+              <div id="slide-top" class="mx-1">
+                <img class="w-full h-36 object-cover bg-gradient-to-b from-transparent to-blue-200 rounded-lg" src="images/new2.png" alt="Card Image">
+              </div>
+          
+              <!-- Bookmark Icon -->
+              <div id="slide-top" class="absolute bottom-2 right-4 bg-white p-1 rounded-full shadow">
+                <img src="https://img.icons8.com/ios-filled/50/1E88E5/circuit.png" alt="Tech Logo" class="w-5 h-5">
+              </div>
+            </div>
+          
+            <div id="slide-top" class="p-3 ">
+              <h3 class="text-xs font-semibold mb-1">Ashley Stapleton</h3>
+              <p class="text-gray-400 text-[10px]">Director of Tech at <span class="text-blue-600">Dealsforce</span></p>
+            </div>
+
+            <!-- Contact Info container 1-->
+            <div id="slide-top" class="flex items-center ">
+                <div class="relative">
+                    <!-- icon wrapper with margin -->
+                    <div class="mx-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="24px" fill="#f6"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/></svg>
+                    </div>
+                
+                    <!-- check Icon -->
+                    <div class="absolute bottom-2 left-3.5 top-0.5 p-1">
+                    <img src="images/checkmark-no-bg.png" alt="checkmark" class="w-2 h-2">
+                    </div>
+                </div>
+                <!-- Email container -->
+                <div id="slide-top" class="flex justify-between items-center relative right-1 border border-black/5 rounded-lg shadow-lg px-2 py-0.5 w w-64 mx-auto">
+                    <p class="text-[9px]">ashley@dealsforce.com</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="opacity-40" height="10px" viewBox="0 -960 960 960" width="24px" fill="#f6"><path d="M760-200H320q-33 0-56.5-23.5T240-280v-560q0-33 23.5-56.5T320-920h280l240 240v400q0 33-23.5 56.5T760-200ZM560-640v-200H320v560h440v-360H560ZM160-40q-33 0-56.5-23.5T80-120v-560h80v560h440v80H160Zm160-800v200-200 560-560Z"/></svg>
+                </div>
+                
+            </div>
+
+            <!-- Contact Info container 2-->
+            <div id="slide-top" class="flex items-center mt-1">
+                <div class="relative">
+                    <!-- icon wrapper with margin -->
+                    <div class="mx-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="24px" fill="#f6"><path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg>
+                    </div>
+                
+                    <!-- check Icon -->
+                    <div class="absolute bottom-2 left-3.5 top-0.5 p-1">
+                    <img src="images/checkmark-no-bg.png" alt="checkmark" class="w-2 h-2">
+                    </div>
+                </div>
+                <!-- phone number -->
+                <div id="slide-top" class="flex justify-between items-center relative right-1 border border-black/5 rounded-lg shadow-lg px-2 py-0.5 max-w-lg w-64 mx-auto">
+                    <p class="text-[9px]">(323) 463-4001</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="opacity-40" height="10px" viewBox="0 -960 960 960" width="24px" fill="#f6"><path d="M760-200H320q-33 0-56.5-23.5T240-280v-560q0-33 23.5-56.5T320-920h280l240 240v400q0 33-23.5 56.5T760-200ZM560-640v-200H320v560h440v-360H560ZM160-40q-33 0-56.5-23.5T80-120v-560h80v560h440v80H160Zm160-800v200-200 560-560Z"/></svg>
+                </div>
+                
+            </div>
+        </div>
+        <!-- Hero Card end -->
+
+        <!-- Hero Card 3-->
+        <div id="slide-right" class="w-48 rounded-xl rotate-3 top-8 overflow-hidden shadow-lg bg-gray-100 pb-3 mt-10">
+            <div class="relative">
+              <!-- Image wrapper -->
+              <div id="slide-right" class="m-1">
+                <img class="w-full h-36 object-cover bg-gradient-to-b from-transparent to-blue-200 rounded-lg" src="images/new4.png" alt="Card Image">
+              </div>
+          
+              <!-- Bookmark Icon -->
+              <div id="slide-right" class="absolute bottom-2 right-4 bg-white p-1 rounded-full shadow">
+                <img src="https://img.icons8.com/ios-filled/50/E53935/artificial-intelligence.png" alt="Minimalistic Red Tech Logo" class="w-5 h-5">
+              </div>
+            </div>
+          
+            <div id="slide-right" class="p-3 ">
+              <h3 class="text-xs font-semibold mb-1">Joseph Graham</h3>
+              <p class="text-gray-400 text-[10px]">Sr. Manager at <span class="text-blue-600">Fakebook</span></p>
+            </div>
+
+            <!-- Contact Info container 1-->
+            <div id="slide-right" class="flex items-center ">
+                <div class="relative">
+                    <!-- icon wrapper with margin -->
+                    <div class="mx-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="24px" fill="#f6"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/></svg>
+                    </div>
+                
+                    <!-- check Icon -->
+                    <div class="absolute bottom-2 left-3.5 top-0.5 p-1">
+                    <img src="images/checkmark-no-bg.png" alt="checkmark" class="w-2 h-2">
+                    </div>
+                </div>
+                <!-- Email container -->
+                <div id="slide-right" class="flex justify-between items-center relative right-1 border border-black/5 rounded-lg shadow-lg px-2 py-0.5 w w-64 mx-auto">
+                    <p class="text-[9px]">joseph@fakebook.com</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="opacity-40" height="10px" viewBox="0 -960 960 960" width="24px" fill="#f6"><path d="M760-200H320q-33 0-56.5-23.5T240-280v-560q0-33 23.5-56.5T320-920h280l240 240v400q0 33-23.5 56.5T760-200ZM560-640v-200H320v560h440v-360H560ZM160-40q-33 0-56.5-23.5T80-120v-560h80v560h440v80H160Zm160-800v200-200 560-560Z"/></svg>
+                </div>
+                
+            </div>
+
+            <!-- Contact Info container 2-->
+            <div id="slide-right" class="flex items-center mt-1">
+                <div class="relative">
+                    <!-- icon wrapper with margin -->
+                    <div class="mx-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="24px" fill="#f6"><path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg>
+                    </div>
+                
+                    <!-- check Icon -->
+                    <div class="absolute bottom-2 left-3.5 top-0.5 p-1">
+                    <img src="images/checkmark-no-bg.png" alt="checkmark" class="w-2 h-2">
+                    </div>
+                </div>
+                <!-- phone number container -->
+                <div id="slide-right" class="flex justify-between items-center relative right-1 border border-black/5 rounded-lg shadow-lg px-2 py-0.5 max-w-lg w-64 mx-auto">
+                    <p class="text-[9px]">(296) 562-7775</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="opacity-40" height="10px" viewBox="0 -960 960 960" width="24px" fill="#f6"><path d="M760-200H320q-33 0-56.5-23.5T240-280v-560q0-33 23.5-56.5T320-920h280l240 240v400q0 33-23.5 56.5T760-200ZM560-640v-200H320v560h440v-360H560ZM160-40q-33 0-56.5-23.5T80-120v-560h80v560h440v80H160Zm160-800v200-200 560-560Z"/></svg>
+                </div>
+                
+            </div>
+        </div>
+        <!-- Hero Card end -->
+        </div> 
+  </body>
+</html>
